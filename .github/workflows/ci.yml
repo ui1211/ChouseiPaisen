@@ -6,6 +6,9 @@ on:
       - main   # main ブランチに push されたとき
   workflow_dispatch:   # 手動実行もできるようにする
 
+permissions:
+  contents: write 
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
