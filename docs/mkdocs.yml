@@ -21,7 +21,7 @@ plugins:
   - awesome-pages
   - table-reader
   - plantuml:
-      puml_url: https://www.plantuml.com/plantuml/ # リモート描画サーバ利用
+      puml_url: https://www.plantuml.com/plantuml/svg/
       puml_keyword: plantuml
       verify_ssl: true
       verbose: true
