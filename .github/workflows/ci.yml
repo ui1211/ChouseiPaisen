@@ -21,7 +21,8 @@ jobs:
               mkdocs-awesome-pages-plugin mkdocs-table-reader-plugin \
               mkdocs-with-pdf mkdocs_puml \
               mkdocs-material-extensions mkdocs-get-deps \
-              pymdown-extensions ghp-import
+              pymdown-extensions ghp-import \
+              pip install openpyxl
 
       # MkDocs ビルド
       - run: mkdocs build --clean
