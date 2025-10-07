@@ -1,4 +1,5 @@
 site_name: 調整パイセン
+site_url: https://ui12.github.io/ChouseiPaisen/
 
 theme:
   name: material
