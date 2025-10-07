@@ -1,16 +1,33 @@
-name: ci
+name: deploy MkDocs
 
 on:
   push:
     branches:
-      - main
+      - main   # main ブランチに push されたとき
+  workflow_dispatch:   # 手動実行もできるようにする
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
         with:
-          python-version: 3.9
-      - run: pip install mkdocs-material
-      - run: mkdocs gh-deploy --force
+          python-version: "3.x"
+
+      # requirements.txt に書いた依存関係を全部インストール
+      - run: pip install mkdocs mkdocs-material \
+              mkdocs-awesome-pages-plugin mkdocs-table-reader-plugin \
+              mkdocs-with-pdf mkdocs_puml \
+              mkdocs-material-extensions mkdocs-get-deps \
+              pymdown-extensions ghp-import
+
+      # MkDocs ビルド
+      - run: mkdocs build --clean
+
+      # gh-pages ブランチにデプロイ
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
