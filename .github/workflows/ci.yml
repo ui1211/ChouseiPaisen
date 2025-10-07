@@ -27,7 +27,7 @@ jobs:
               pymdown-extensions ghp-import openpyxl \
 
       # MkDocs ビルド
-      - run: mkdocs build --clean
+      - run: mkdocs build --clean -f docs/mkdocs.yml
 
       # gh-pages ブランチにデプロイ
       - uses: peaceiris/actions-gh-pages@v3
