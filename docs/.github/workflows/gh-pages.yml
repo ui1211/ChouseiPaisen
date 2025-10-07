@@ -1,0 +1,21 @@
+name: deploy MkDocs
+
+on:
+  push:
+    branches:
+      - main   # または master
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.x
+      - run: pip install mkdocs mkdocs-material mkdocs-awesome-pages-plugin mkdocs-table-reader-plugin mkdocs-with-pdf mkdocs-plantuml-plugin
+      - run: mkdocs build --clean
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
