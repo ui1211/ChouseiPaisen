@@ -1,0 +1,49 @@
+site_name: 調整パイセン
+
+theme:
+  name: material
+  language: ja
+  features:
+    - navigation.expand
+    # - navigation.sections
+    # - toc.integrate
+    - content.code.copy
+    - navigation.tabs
+    - navigation.top
+  palette:
+    - scheme: default
+      primary: blue
+      accent: light blue
+
+plugins:
+  - search
+  - awesome-pages
+  - table-reader
+  - plantuml:
+      puml_url: https://www.plantuml.com/plantuml/ # リモート描画サーバ利用
+      puml_keyword: plantuml
+      verify_ssl: true
+      verbose: true
+  - with-pdf:
+      output_path: pdf/仕様書.pdf
+      cover_title: "システム仕様書"
+      cover_subtitle: "詳細設計書"
+      toc_title: "目次"
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+
+use_directory_urls: false
+
+extra_css:
+  - assets/extra.css
